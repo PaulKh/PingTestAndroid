@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TestPingAndroid</string>
+    <string name="insert_ip">Insert address to ping</string>
+    <string name="ping">Ping</string>
+    <string name="number_of_ping_tries">Number of ping tries</string>
+    <string name="ip_not_recognized">IP or host name is not recognized</string>
+    <string name="error_saving_the_ping">Error during ping saving</string>
+</resources>
