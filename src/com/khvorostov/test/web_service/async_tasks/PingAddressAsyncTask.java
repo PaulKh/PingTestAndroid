@@ -1,20 +1,12 @@
 package com.khvorostov.test.web_service.async_tasks;
 
 import android.os.AsyncTask;
-import com.khvorostov.test.enums.RequestStatus;
-import com.khvorostov.test.model.Ping;
-import com.khvorostov.test.web_service.JsonParser;
 import com.khvorostov.test.web_service.callbacks.PingMadeCallback;
-import com.khvorostov.test.web_service.callbacks.PingRequestReceivedCallback;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Paul on 08/07/15.

@@ -20,10 +20,12 @@ public class PingRowHeader implements Row {
     public RowType getRowType() {
         return RowType.PING_ROW_HEADER;
     }
+
     static class ViewHolder {
         TextView sourceAddress;
         TextView destinationAddress;
     }
+
     public View getView(LayoutInflater inflater, View convertView) {
         ViewHolder viewHolder;
         if (convertView == null) {

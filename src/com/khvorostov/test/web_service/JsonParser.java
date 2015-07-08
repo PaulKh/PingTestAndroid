@@ -5,8 +5,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class JsonParser {
         List<Ping> pings = new ArrayList<>();
         try {
             JSONArray json = new JSONArray(jsonString);
-            for (int i = 0; i < json.length(); i++){
+            for (int i = 0; i < json.length(); i++) {
                 JSONObject pingJson = json.getJSONObject(i);
                 String pingTime = pingJson.getString(pingResultKEY);
                 pings.add(new Ping(pingTime, pingJson.getString(sourceAddressKEY), pingJson.getString(destinationAddressKEY)));
@@ -32,7 +30,8 @@ public class JsonParser {
         }
         return pings;
     }
-    public static JSONObject pingToJson(Ping ping){
+
+    public static JSONObject pingToJson(Ping ping) {
         JSONObject pingJson = new JSONObject();
         try {
             pingJson.put(pingResultKEY, ping.getPingResult());

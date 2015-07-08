@@ -7,20 +7,16 @@ import android.widget.*;
 import com.khvorostov.test.adapters.PingListViewAdapter;
 import com.khvorostov.test.enums.RequestStatus;
 import com.khvorostov.test.model.Ping;
-import com.khvorostov.test.rows.PingRowHeader;
-import com.khvorostov.test.web_service.PingHandler;
 import com.khvorostov.test.web_service.WebRequestHandler;
 import com.khvorostov.test.web_service.async_tasks.PingAddressAsyncTask;
 import com.khvorostov.test.web_service.callbacks.PingCreatedCallback;
 import com.khvorostov.test.web_service.callbacks.PingMadeCallback;
 import com.khvorostov.test.web_service.callbacks.PingRequestReceivedCallback;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements PingRequestReceivedCallback, PingCreatedCallback, PingMadeCallback{
+public class MainActivity extends Activity implements PingRequestReceivedCallback, PingCreatedCallback, PingMadeCallback {
     private Spinner spinner;
     private EditText pingEditText;
     private PingListViewAdapter adapter;
@@ -68,15 +64,15 @@ public class MainActivity extends Activity implements PingRequestReceivedCallbac
     public void pingsReceived(List<Ping> pings) {
         stopProgressHUD();
         adapter.clearAdapter();
-        for (Ping ping: pings){
+        for (Ping ping : pings) {
             adapter.addRow(ping);
         }
         adapter.notifyDataSetChanged();
     }
 
-    private void buildView(){
+    private void buildView() {
         List<Integer> spinnerValues = new ArrayList<>();
-        for(int i = 1; i <= 20; i++){
+        for (int i = 1; i <= 20; i++) {
             spinnerValues.add(i);
         }
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this,
@@ -101,19 +97,21 @@ public class MainActivity extends Activity implements PingRequestReceivedCallbac
         });
         listView.setAdapter(adapter);
     }
-    private void startProgressHUD(){
+
+    private void startProgressHUD() {
         setProgressBarIndeterminateVisibility(true);
     }
-    private void stopProgressHUD(){
+
+    private void stopProgressHUD() {
         setProgressBarIndeterminateVisibility(false);
     }
+
     @Override
     public void pingRequestSent(RequestStatus requestStatus, Ping ping) {
-        if (requestStatus == RequestStatus.SUCCESS){
+        if (requestStatus == RequestStatus.SUCCESS) {
             adapter.addRow(ping);
             adapter.notifyDataSetChanged();
-        }
-        else{
+        } else {
             Toast.makeText(this, R.string.error_saving_the_ping, Toast.LENGTH_LONG).show();
         }
         stopProgressHUD();
@@ -124,8 +122,7 @@ public class MainActivity extends Activity implements PingRequestReceivedCallbac
         if (pingResult != null && pingResult != "") {
             Ping ping = new Ping(pingResult, handler.getThisDeviceIp(), destinationAddress);
             handler.postPing(ping, MainActivity.this);
-        }
-        else{
+        } else {
             stopProgressHUD();
             Toast.makeText(this, R.string.ip_not_recognized, Toast.LENGTH_LONG).show();
         }

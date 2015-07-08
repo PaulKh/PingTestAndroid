@@ -1,7 +1,6 @@
 package com.khvorostov.test.model;
 
 import java.io.Serializable;
-import java.net.InetAddress;
 
 /**
  * Created by Paul on 06/07/15.

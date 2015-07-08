@@ -9,7 +9,7 @@ import com.khvorostov.test.model.Ping;
 /**
  * Created by Paul on 07/07/15.
  */
-public class PingRowContent implements Row{
+public class PingRowContent implements Row {
     private Ping ping;
 
     public PingRowContent(Ping ping) {
@@ -20,9 +20,11 @@ public class PingRowContent implements Row{
     public RowType getRowType() {
         return RowType.PING_ROW_CONTENT;
     }
+
     static class ViewHolder {
         TextView resultTextview;
     }
+
     public View getView(LayoutInflater inflater, View convertView) {
         ViewHolder viewHolder;
         if (convertView == null) {

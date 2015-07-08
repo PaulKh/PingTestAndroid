@@ -6,26 +6,21 @@ import com.khvorostov.test.web_service.async_tasks.RequestAllPingsAsyncTask;
 import com.khvorostov.test.web_service.callbacks.PingCreatedCallback;
 import com.khvorostov.test.web_service.callbacks.PingRequestReceivedCallback;
 import org.apache.http.conn.util.InetAddressUtils;
-import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by Paul on 06/07/15.
  */
-public class WebRequestHandler{
+public class WebRequestHandler {
     private String thisDeviceIp;
-//    private static final String serverAddress = "http://10.183.230.155:8080/";
-    private static final String serverAddress = "http://194.254.174.59:8080/";
+    //    private static final String serverAddress = "http://10.183.230.155:8080/";
+    private static final String serverAddress = "http://194.254.174.2:8080/";
 
     public WebRequestHandler() {
         thisDeviceIp = getIPAddress(true);
@@ -39,7 +34,8 @@ public class WebRequestHandler{
             e.printStackTrace();
         }
     }
-    public void postPing(Ping ping, PingCreatedCallback callback){
+
+    public void postPing(Ping ping, PingCreatedCallback callback) {
         try {
             PostPingAsyncTask asyncTask = new PostPingAsyncTask(callback, ping);
             asyncTask.execute(new URL(serverAddress + "ping/new"));

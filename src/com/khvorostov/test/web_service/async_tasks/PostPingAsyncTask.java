@@ -5,14 +5,13 @@ import com.khvorostov.test.enums.RequestStatus;
 import com.khvorostov.test.model.Ping;
 import com.khvorostov.test.web_service.JsonParser;
 import com.khvorostov.test.web_service.callbacks.PingCreatedCallback;
-import com.khvorostov.test.web_service.callbacks.PingRequestReceivedCallback;
 import org.json.JSONObject;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Paul on 07/07/15.
@@ -46,8 +45,7 @@ public class PostPingAsyncTask extends AsyncTask<URL, Void, RequestStatus> {
 
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 return RequestStatus.SUCCESS;
-            }
-            else return RequestStatus.ERROR;
+            } else return RequestStatus.ERROR;
         } catch (IOException e) {
             e.printStackTrace();
             return RequestStatus.ERROR;

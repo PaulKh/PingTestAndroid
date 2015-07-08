@@ -7,7 +7,6 @@ import android.widget.BaseExpandableListAdapter;
 import com.khvorostov.test.model.Ping;
 import com.khvorostov.test.rows.PingRowContent;
 import com.khvorostov.test.rows.PingRowHeader;
-import com.khvorostov.test.rows.Row;
 
 import java.util.ArrayList;
 import java.util.List;
